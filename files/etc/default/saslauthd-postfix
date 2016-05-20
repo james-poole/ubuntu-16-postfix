@@ -1,0 +1,10 @@
+START=yes
+DESC="SASL Authentication Daemon for Postfix"
+NAME="saslauthd-postf"
+MECHANISMS="ldap"
+MECH_OPTIONS=""
+THREADS=5
+#Postfix is chroot'd
+OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd"
+
+

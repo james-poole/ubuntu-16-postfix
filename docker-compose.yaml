@@ -1,0 +1,9 @@
+version: '2'
+services:
+  postfix:
+    hostname: postfix
+    container_name: postfix
+    build: .
+    image: docker-ubuntu-postfix
+    ports:
+      - "25:2500"
