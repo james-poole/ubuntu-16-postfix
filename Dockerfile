@@ -23,8 +23,7 @@ RUN \
   echo 'pwcheck_method: saslauthd' >> /etc/postfix/sasl/smtpd.conf && \
   mkdir -p /var/spool/postfix/var/run/saslauthd && \
   rm -rf /var/lib/apt/lists/* && \
-  mkfifo -m 666 /tmp/logpipe
-RUN \
+  mkfifo -m 666 /tmp/logpipe && \
   sed -i -e '/^module(load="imklog")/g' /etc/rsyslog.conf && \
   sed -i -e '/^\$KLogPermitNonKernelFacility/d' /etc/rsyslog.conf
 

@@ -7,5 +7,5 @@ services:
     image: docker-ubuntu-postfix
     ports:
       - "8025:8025"
-    environment:
-      - "SUPERVISORD_LOGLEVEL=debug"
+    #environment:
+     # - "SUPERVISORD_LOGLEVEL=debug"
