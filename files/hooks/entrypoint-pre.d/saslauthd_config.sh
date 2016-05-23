@@ -14,16 +14,11 @@ die () {
 
 cat <<EOF > /etc/saslauthd.conf
 ldap_auth_method: bind
+ldap_default_domain: ipa.${DOMAIN}
+ldap_default_realm: ipa.${DOMAIN}
 ldap_servers: $(for s in ${LDAP_SERVERS}; do echo -n "${LDAP_PROTOCOL}://${s} "; done)
 ldap_search_base: ${LDAP_SEARCH_BASE}
 ldap_filter: ${LDAP_FILTER}
 ldap_bind_dn: ${LDAP_BIND_DN}
 ldap_bind_pw: ${LDAP_BIND_PW}
 EOF
-
-# ldap_servers: ldap://109.228.48.235
-# ldap_search_base: dc=ipa,dc=gb-je06,dc=live-paas,dc=net
-# ldap_filter: (&(memberOf=cn=smtpsenders,cn=groups,cn=accounts,dc=ipa,dc=gb-je06,dc=live-paas,dc=net)(uid=%U))
-# ldap_bind_dn: uid=ldapsearch,cn=users,cn=accounts,dc=ipa,dc=gb-je06,dc=live-paas,dc=net
-# ldap_bind_pw: IamAPassword1
-# ldap_auth_method: bind

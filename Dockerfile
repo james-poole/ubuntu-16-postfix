@@ -8,8 +8,8 @@ ENV DOMAIN=example.com \
     LDAP_SERVERS="ldap01.example.com ldap02.example.com" \
     LDAP_SEARCH_BASE="dc=ipa,dc=example,dc=com" \
     LDAP_FILTER="(&(memberOf=cn=users,cn=groups,cn=accounts,dc=ipa,dc=example,dc=com)(uid=%U))" \
-    LDAP_BIND_DN=bob \
-    LDAP_BIND_PW=bob
+    LDAP_BIND_DN="uid=user,cn=users,cn=accounts,dc=ipa,dc=example,dc=com" \
+    LDAP_BIND_PW=pass
 RUN \
   echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections && \
   apt-get update && apt-get install -y postfix libsasl2-modules sasl2-bin rsyslog nano telnet && \
@@ -25,7 +25,8 @@ RUN \
   rm -rf /var/lib/apt/lists/* && \
   mkfifo -m 666 /tmp/logpipe && \
   sed -i -e '/^module(load="imklog")/g' /etc/rsyslog.conf && \
-  sed -i -e '/^\$KLogPermitNonKernelFacility/d' /etc/rsyslog.conf
+  sed -i -e '/^\$KLogPermitNonKernelFacility/d' /etc/rsyslog.conf && \
+  chown postfix /var/run/saslauthd
 
 COPY files /
 EXPOSE $SMTP_PORT
