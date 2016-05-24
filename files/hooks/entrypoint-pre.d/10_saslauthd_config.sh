@@ -21,4 +21,6 @@ ldap_search_base: ${LDAP_SEARCH_BASE}
 ldap_filter: ${LDAP_FILTER}
 ldap_bind_dn: ${LDAP_BIND_DN}
 ldap_bind_pw: ${LDAP_BIND_PW}
+ldap_start_tls: yes
+ldap_tls_cacert_file: /etc/freeipa_ca.crt
 EOF
