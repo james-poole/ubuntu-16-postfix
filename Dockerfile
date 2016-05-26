@@ -11,6 +11,7 @@ ENV DOMAIN=example.com \
     LDAP_BIND_DN="uid=user,cn=users,cn=accounts,dc=ipa,dc=example,dc=com" \
     LDAP_BIND_PW=pass \
     LDAP_CA_FILE="" \
+    SSL_CA_FILE="" \
     SSL_CERT_FILE="" \
     SSL_KEY_FILE=""
 
