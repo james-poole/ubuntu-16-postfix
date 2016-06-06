@@ -1,5 +1,5 @@
-FROM 1and1internet/ubuntu-16:unstable
-MAINTAINER james.wilkins@fasthosts.com
+FROM 1and1internet/ubuntu-16:latest
+MAINTAINER james.wilkins@1and1.co.uk
 ARG DEBIAN_FRONTEND=noninteractive
 
 ENV DOMAIN=example.com \
