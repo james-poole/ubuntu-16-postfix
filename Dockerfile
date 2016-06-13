@@ -34,8 +34,9 @@ RUN \
   sed -i -e '/^module(load="imklog")/g' /etc/rsyslog.conf && \
   sed -i -e '/^\$KLogPermitNonKernelFacility/d' /etc/rsyslog.conf && \
   echo "mech_list: PLAIN LOGIN" >> /etc/postfix/sasl/smtpd.conf && \
-  chown postfix /var/run/saslauthd && \
+  chown postfix /var/run/saslauthd
+COPY files /
+RUN \
   chmod 0755 /hooks/entrypoint-pre.d/* /hooks/supervisord-pre.d/* || true
 
-COPY files /
 EXPOSE $SMTP_PORT
