@@ -34,7 +34,6 @@ RUN \
   sed -i -e '/^module(load="imklog")/g' /etc/rsyslog.conf && \
   sed -i -e '/^\$KLogPermitNonKernelFacility/d' /etc/rsyslog.conf && \
   echo "mech_list: PLAIN LOGIN" >> /etc/postfix/sasl/smtpd.conf && \
-  touch /etc/saslauthd.conf && chmod 777 /etc/saslauthd.conf && \
   chown postfix /var/run/saslauthd
 COPY files /
 RUN \
