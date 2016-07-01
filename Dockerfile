@@ -37,6 +37,6 @@ RUN \
   chown postfix /var/run/saslauthd
 COPY files /
 RUN \
-  chmod 0755 /hooks/entrypoint-pre.d/* /hooks/supervisord-pre.d/* || true
+  chmod -R 755 /hooks || true
 
 EXPOSE $SMTP_PORT
