@@ -5,7 +5,7 @@ die() {
   exit 1
 }
 
-postconf -e "myhostname = smtprelay.${DOMAIN}"
+postconf -e "myhostname = ${DOMAIN}"
 
 # SSL config
 if ! [ -z $SSL_CERT_FILE ] && ! [ -z $SSL_KEY_FILE ]; then
